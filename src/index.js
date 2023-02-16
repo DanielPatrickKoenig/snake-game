@@ -1,14 +1,5 @@
 import './index.css'
-import {TweenLite} from 'gsap';
-import axios from 'axios';
 import SnakeGame from './engine/SnakeGame';
-var nums = {a: 1, b: 2};
-TweenLite.to(nums, .5, {a: 50, onUpdate: function (o,p) {
-  console.log(o[p]);
-}, onUpdateParams: [nums,'a']});
-axios.get('bundle.js').then((response) => {
-  console.log(response);
-});
 window.onload = () => {
   const gameBoard = document.querySelector('.game-board');
   const snakeHead = document.createElement('div');
@@ -54,6 +45,27 @@ window.onload = () => {
       game.playGame();
       
     }
+  });
+  document.querySelector('body').addEventListener('keydown', (e) => {
+    switch(e.key){
+      case  'ArrowUp': {
+        game.changeDirection(0, -1);
+        break;
+      }
+      case  'ArrowDown': {
+        game.changeDirection(0, 1);
+        break;
+      }
+      case  'ArrowLeft': {
+        game.changeDirection(-1, 0);
+        break;
+      }
+      case  'ArrowRight': {
+        game.changeDirection(1, 0);
+        break;
+      }
+    }
+    document.querySelector('body').focus();
   });
 
 }

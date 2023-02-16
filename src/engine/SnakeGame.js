@@ -12,7 +12,7 @@ export default class SnakeGame{
         this.onGameOver = null;
         this.moveSize = 4;
         this.length = 5;
-        this.food = {x: Math.floor(Math.random()*width), y: Math.floor(Math.random()*height)};
+        this.food = {x: Math.floor(Math.random()*(width-(1 * this.moveSize))), y: Math.floor(Math.random()*(height-(1 * this.moveSize)))};
         this.isPlaying = true;
     }
     playGame(notFirst){
@@ -39,13 +39,14 @@ export default class SnakeGame{
         
     }
     move(){
+        console.log(this.parts.length);
         this.followHead();
         this.parts[0].x += this.direction.x * this.moveSize;
         this.parts[0].y += this.direction.y * this.moveSize;
-        if(this.parts[0].x > this.width) this.parts[0].x = 0;
-        if(this.parts[0].y > this.height) this.parts[0].y = 0;
-        if(this.parts[0].x < 0) this.parts[0].x = this.width;
-        if(this.parts[0].y < 0) this.parts[0].y = this.height;
+        if(this.parts[0].x >= this.width) this.parts[0].x = 0;
+        if(this.parts[0].y >= this.height) this.parts[0].y = 0;
+        if(this.parts[0].x < 0) this.parts[0].x = this.width - (1 * this.moveSize);
+        if(this.parts[0].y < 0) this.parts[0].y = this.height - (1 * this.moveSize);
         if(this.onMove) this.onMove(this.parts);
         if(jstrig.distance(this.parts[0], this.food) < this.moveSize) {
             this.placeFood();
@@ -78,7 +79,7 @@ export default class SnakeGame{
         
     }
     placeFood(){
-        this.food = {x: Math.floor(Math.random()*this.width), y: Math.floor(Math.random()*this.height)};
+        this.food = {x: Math.floor(Math.random()*(this.width-(1 * this.moveSize))), y: Math.floor(Math.random()*(this.height-(1 * this.moveSize)))};
         if(this.onFoodPlaced) this.onFoodPlaced();
     }
 

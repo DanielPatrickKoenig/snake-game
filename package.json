@@ -1,7 +1,7 @@
 {
-  "name": "js-starter-kit",
+  "name": "snake-game",
   "version": "1.0.0",
-  "description": "A starting point for js dev",
+  "description": "a basic snake game",
   "scripts": {
     "predev": "babel-node buildScripts/srcServer-precode.js",
     "dev": "babel-node buildScripts/srcServer.js",
@@ -17,8 +17,6 @@
   "author": "Dan Koenig",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.0",
-    "gsap": "^2.0.2",
     "jstrig": "^1.0.4"
   },
   "devDependencies": {
