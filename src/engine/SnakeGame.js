@@ -10,7 +10,7 @@ export default class SnakeGame{
         this.onPartAdded = null;
         this.onFoodPlaced = null;
         this.onGameOver = null;
-        this.moveSize = 7.5;
+        this.moveSize = 4;
         this.length = 5;
         this.food = {x: Math.floor(Math.random()*width), y: Math.floor(Math.random()*height)};
         this.isPlaying = true;
